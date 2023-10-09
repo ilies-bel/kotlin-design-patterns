@@ -1,3 +1,5 @@
+package strategy
+
 class SayHello(private val stringFormatterStrategy: (String) -> String) {
     fun print(string: String) {
         println(stringFormatterStrategy(string))
@@ -13,7 +15,6 @@ val uppercase = { it: String -> it.uppercase() }
 val reverse = String::reversed// fonctions anonymes
 
 // Usage
-
 fun main() {
     val addMessagePrinter = SayHello(addMessage)
     val lowercasePrinter = SayHello(lowercase)

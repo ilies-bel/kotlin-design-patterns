@@ -1,3 +1,5 @@
 out
 .idea
+conf.iml
+.DS_Store
 /kotlin-design-patterns.iml
