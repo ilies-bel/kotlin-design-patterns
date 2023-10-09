@@ -1,10 +1,10 @@
 class SayHello(private val stringFormatterStrategy: (String) -> String) {
     fun print(string: String) {
-        println("Hello " + stringFormatterStrategy(string))
+        println(stringFormatterStrategy(string))
     }
 }
 
-val addMessage  = { s: String -> "message: $s" }
+val addMessage  = { s: String -> "say $s 😎" }
 
 val lowercase = fun(str : String) =  str.lowercase()
 
@@ -15,6 +15,13 @@ val reverse = String::reversed// fonctions anonymes
 // Usage
 
 fun main() {
-    val printer = Printer(uppercase)
-    printer.print("Hello Takima !")
+    val addMessagePrinter = SayHello(addMessage)
+    val lowercasePrinter = SayHello(lowercase)
+    val uppercasePrinter = SayHello(uppercase)
+    val reversePrinter = SayHello(reverse)
+
+    addMessagePrinter.print("Hello World !")
+    lowercasePrinter.print("Hello World !")
+    uppercasePrinter.print("Hello World !")
+    reversePrinter.print("Hello World !")
 }
