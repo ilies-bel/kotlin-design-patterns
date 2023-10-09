@@ -1,19 +1,18 @@
-class Printer(private val stringFormatterStrategy: (String) -> String) {
+class SayHello(private val stringFormatterStrategy: (String) -> String) {
     fun print(string: String) {
-        println(stringFormatterStrategy(string))
+        println("Hello " + stringFormatterStrategy(string))
     }
 }
 
-val reverse  = { s: String -> s.reversed() }
+val addMessage  = { s: String -> "message: $s" }
 
-val lowercase : (String) -> String  = String::lowercase
+val lowercase = fun(str : String) =  str.lowercase()
 
 val uppercase = { it: String -> it.uppercase() }
 
-val test = fun(s: String) = s.reversed()
+val reverse = String::reversed// fonctions anonymes
 
 // Usage
-
 
 fun main() {
     val printer = Printer(uppercase)
