@@ -15,7 +15,7 @@ val test = fun(s: String) = s.reversed()
 // Usage
 
 
-fun main(args: Array<String>) {
+fun main() {
     val printer = Printer(uppercase)
     printer.print("Hello Takima !")
 }
