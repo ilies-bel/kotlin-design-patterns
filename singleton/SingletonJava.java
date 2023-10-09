@@ -4,6 +4,6 @@ enum SingletonJava {
     INSTANCE;
 
     public void doSomething() {
-        System.out.println("do something");
+        System.out.println("Doing something");
     }
 }
