@@ -7,61 +7,50 @@ fun interface DiscountStrategy {
 */
 
 
-fun interface DiscountStrategy : (Product) -> Double
+fun interface DiscountStrategy : (Product) -> Double {
 
-val fixedRateStrategy = strategyFactory("fixed")
-
-val discountStrategy = strategyFactory("percentage", 0.9)
-
-
-fun  strategyFactory(type : String, rate : Double?) : DiscountStrategy {
-   return when(type) {
-        "fixed" -> DiscountStrategy {
-            it.price - 10
+    companion object {
+        fun fixedRateStrategy(amount: Double): DiscountStrategy {
+            return DiscountStrategy {
+                (it.price - amount).coerceAtLeast(0.0)
+            }
         }
-        "percentage" -> DiscountStrategy {
-            it.price * rate
-        }
-        else -> error("TODO")
     }
 }
 
-class DiscountCalculator(private val discountStrategy : DiscountStrategy) {
 
-    fun getDiscountedPrice(product: Product) = discountStrategy(product)
-
-}
+class DiscountService {
 
 
-class DiscountService(private val discountStrategy : DiscountStrategy) {
+    fun getDiscountedPrice(product: Product): Double {
 
+        val discountStrategy = when (product) {
+            is Phone -> DiscountStrategy.fixedRateStrategy(10.0)
 
-    fun discountedPrice(product: Product): Double {
-        val test = DiscountCalculator(discountStrategy)
-
-        return when(product) {
-            is Phone -> {
-                test.getDiscountedPrice(product)
-            }
             is VideoGame -> {
-                discountStrategy
-            }
-            is Book -> {
-                fixedRateStrateg
+                DiscountStrategy {
+                    (it.price - 10).coerceAtLeast(0.0)
+                }
             }
 
-            else -> error("TODO")
+            is Book -> {
+                DiscountStrategy {
+                    it.price * 0.5
+                }
+            }
         }
+
+        return discountStrategy(product)
     }
 
 
-    fun totalCartPrice(): Double{
+    fun totalCartPrice(): Double {
         val book = Book(1, "ref", "name", 10.0, "model")
         val book2 = Book(1, "ref", "name", 10.0, "model")
         val phone = Phone(1, "ref", "name", 10.0, "model")
         val procts = listOf(book, book2, phone)
 
-        return procts.sumOf { discountedPrice(it).compute(it) }
+        return procts.sumOf { getDiscountedPrice(it).compute(it) }
 
 
     }

@@ -1,19 +1,11 @@
 package kotlin
 
-open class Product(
+sealed class Product(
     val id: Long,
     val ref: String,
     val name: String,
     val price: Double,
-) {
-    companion object {
-        fun of(type: String, product: Product): Product {
-            when (type) {
-                "phone" -> return Phone()
-            }
-        }
-    }
-}
+)
 
 class Phone(id: Long, ref: String, name: String, price: Double, model: String) :
     Product(id, ref, name, price) {
