@@ -3,6 +3,7 @@ package com.takima;
 import com.moon.CartService
 import com.moon.models.Address
 import com.sun.persistence.CartDao
+import com.sun.services.DiscountStrategy
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -26,5 +27,32 @@ class AppTest()
         assertEquals(address.street, address.street)
 
     }
+
+
+    fun `factory method`() {
+        val discount = DiscountFactory.create(DiscountType.FIXED)
+    }
+}
+
+
+/**
+ * Factory method - replace constructor
+ * named
+ */
+object DiscountFactory {
+    fun create(type: DiscountType): DiscountStrategy {
+        return when (type) {
+            DiscountType.FIXED -> DiscountStrategy.fixedRateStrategy(10.0)
+            DiscountType.PERCENTAGE -> DiscountStrategy {
+                (it.price - 10).coerceAtLeast(0.0)
+            }
+        }
+    }
+}
+
+enum class DiscountType {
+    FIXED,
+    PERCENTAGE,
+    ;
 }
 
