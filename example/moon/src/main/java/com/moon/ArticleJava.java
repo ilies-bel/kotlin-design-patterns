@@ -1,4 +1,4 @@
-package kotlin;
+package com.moon;
 
 public class ArticleJava {
     private String name;

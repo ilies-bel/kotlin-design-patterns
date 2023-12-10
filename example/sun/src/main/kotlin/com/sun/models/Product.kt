@@ -1,4 +1,4 @@
-package kotlin
+package com.sun.models
 
 sealed class Product(
     val id: Long,
@@ -17,7 +17,7 @@ class Phone(id: Long, ref: String, name: String, price: Double, model: String) :
     }
 }
 
-class VideoGame(id: Long, ref: String, name: String, pegi: Int,  description: String, brand: String, price: Double) :
+class VideoGame(id: Long, ref: String, name: String, pegi: Int, description: String, brand: String, price: Double) :
     Product(id = id, ref = ref, name = name, price = price)
 
 class Book(id: Long, ref: String, name: String, price: Double, model: String) : Product(

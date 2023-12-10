@@ -4,6 +4,6 @@ conf.iml
 .DS_Store
 /kotlin-design-patterns.iml
 
-conf.iml
-
+target
+*.iml
 example.iml

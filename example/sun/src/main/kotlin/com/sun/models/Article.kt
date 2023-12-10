@@ -1,6 +1,4 @@
-package kotlin
-
-import kotlin.address.Address
+package com.sun.models
 
 
 data class Cart(val articles: List<Article>) {
@@ -12,8 +10,6 @@ data class Cart(val articles: List<Article>) {
 data class Article(
     val name: String,
     val price: Double,
-    val description: String,
-    val seller: Seller,
 )
 
 data class Seller(

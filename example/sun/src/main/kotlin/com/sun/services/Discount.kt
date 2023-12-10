@@ -1,4 +1,9 @@
-package kotlin.discount
+package com.sun.services
+
+import com.sun.models.Book
+import com.sun.models.Phone
+import com.sun.models.Product
+import com.sun.models.VideoGame
 
 /*
 fun interface DiscountStrategy {
@@ -22,7 +27,7 @@ fun interface DiscountStrategy : (Product) -> Double {
 class DiscountService {
 
 
-    fun getDiscountedPrice(product: Product): Double {
+    private fun getDiscountedPrice(product: Product): Double {
 
         val discountStrategy = when (product) {
             is Phone -> DiscountStrategy.fixedRateStrategy(10.0)
@@ -50,7 +55,8 @@ class DiscountService {
         val phone = Phone(1, "ref", "name", 10.0, "model")
         val procts = listOf(book, book2, phone)
 
-        return procts.sumOf { getDiscountedPrice(it).compute(it) }
+        return 0.0
+       // return procts.sumOf { getDiscountedPrice(it).compute(it) }
 
 
     }

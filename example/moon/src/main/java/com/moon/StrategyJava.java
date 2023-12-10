@@ -1,4 +1,5 @@
-import static java.lang.StringTemplate.STR;
+package com.moon;
+
 
 @FunctionalInterface
 interface MessageStrategy {
@@ -20,7 +21,7 @@ class SayHelloJava {
 
 public class StrategyJava {
     public static void main(String[] args) {
-        SayHelloJava addMessage = new SayHelloJava(message -> STR. "say \{ message } 😎" );
+        SayHelloJava addMessage = new SayHelloJava(message -> String.format("say %s 😎", message) );
         SayHelloJava toLowerCase = new SayHelloJava(String::toLowerCase);
         SayHelloJava toUpperCase = new SayHelloJava(message -> message.toUpperCase());
         SayHelloJava toReverse = new SayHelloJava((String message) -> new StringBuilder(message).reverse().toString());
