@@ -1,6 +1,6 @@
 package com.moon;
 
-public class ArticleJava {
+public class Article {
     private String name;
 
     private Double price;
