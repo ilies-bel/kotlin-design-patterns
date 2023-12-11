@@ -1,19 +1,19 @@
 package com.takima;
 
-import com.moon.CartService
-import com.moon.models.Address
 import com.sun.persistence.CartDao
 import com.sun.services.DiscountStrategy
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import com.moon.BasketService
+import com.moon.models.Address
 
 class AppTest()
 {
     @Test
     fun singleton() {
-        val app = CartService.INSTANCE
+        val app = BasketService.INSTANCE
         val app2 = CartDao
-        assert(app === CartService.INSTANCE)
+        assert(app === BasketService.INSTANCE)
         assert(app2 === CartDao)
     }
 
@@ -37,7 +37,7 @@ class AppTest()
 
 /**
  * Factory method - replace constructor
- * named
+ *
  */
 object DiscountFactory {
     fun create(type: DiscountType): DiscountStrategy {

@@ -1,6 +1,6 @@
 package com.moon;
 
-public enum CartService {
+public enum BasketService {
     INSTANCE;
 
     public void doSomething() {

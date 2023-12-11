@@ -1,6 +1,10 @@
 package com.sun.services
 
-class SayHelloKotlin(private val stringFormatterStrategy: (String) -> String) {
+
+
+
+
+class SayHelloKotlin(private val stringFormatterStrategy: (String) -> String) { // todo le faire dans un contexte de l'app e-commerce
     fun print(string: String) {
         println(stringFormatterStrategy(string))
     }
@@ -12,7 +16,7 @@ val lowercase = fun(str: String) = str.lowercase()
 
 val uppercase = { it: String -> it.uppercase() }
 
-val reverse = String::reversed// fonctions anonymes
+val reverse = String::reversed // fonctions anonymes
 
 // Usage
 fun main() {
