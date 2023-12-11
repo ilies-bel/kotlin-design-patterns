@@ -1,12 +1,7 @@
-package kotlin.address;
+package com.moon.models;
 
-public class AddressJ {
-    private String street;
-    private String city;
-    private String zipCode;
-    private String country;
-    private String supplement;
 
+public record Address(String street, String city, String zipCode, String country, String supplement) {
 
     public static class Builder {
         private String street;
@@ -42,14 +37,16 @@ public class AddressJ {
             return this;
         }
 
-        public AddressJ build() {
-            AddressJ addressJ = new AddressJ();
-            addressJ.street = this.street;
-            addressJ.city = this.city;
-            addressJ.zipCode = this.zipCode;
-            addressJ.country = this.country;
-            addressJ.supplement = this.supplement;
-            return addressJ;
+        public Address build() {
+
+            return new Address(
+                this.street,
+                this.city,
+                this.zipCode,
+                this.country,
+                this.supplement
+            );
         }
+
     }
 }

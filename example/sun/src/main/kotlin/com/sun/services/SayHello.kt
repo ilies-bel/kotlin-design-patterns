@@ -1,4 +1,4 @@
-package strategy
+package com.sun.services
 
 class SayHelloKotlin(private val stringFormatterStrategy: (String) -> String) {
     fun print(string: String) {
